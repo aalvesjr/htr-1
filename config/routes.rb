@@ -6,6 +6,12 @@ Hackerboard::Application.routes.draw do
     post "/signup", :action => :create, :as => false
   end
 
+  controller :questions do
+    get "/questions/new", :action => :new, :as => :new_question
+    post "/questions/new", :action => :create, :as => false
+    get "/questions/:id", :action => :show, :as => :question
+  end
+
   controller :sessions do
     get "/login", :action => :new
     post "/login", :action => :create, :as => false
