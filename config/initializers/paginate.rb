@@ -1,3 +1,3 @@
 Paginate.configure do |config|
-  config.size = 10
+  config.size = 15
 end

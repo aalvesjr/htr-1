@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120428140918) do
+ActiveRecord::Schema.define(:version => 20120428152955) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                           :null => false
@@ -21,13 +21,14 @@ ActiveRecord::Schema.define(:version => 20120428140918) do
   end
 
   create_table "questions", :force => true do |t|
-    t.string   "title",                        :null => false
-    t.text     "body",                         :null => false
-    t.integer  "user_id",                      :null => false
-    t.integer  "category_id",                  :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.string   "title",                           :null => false
+    t.text     "body",                            :null => false
+    t.integer  "user_id",                         :null => false
+    t.integer  "category_id",                     :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "replies_count", :default => 0
+    t.boolean  "delta",         :default => true, :null => false
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"

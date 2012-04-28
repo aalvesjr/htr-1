@@ -10,8 +10,14 @@
   </li>
 </ul>
 
+<% content_for :paginate do %>
+  <%= paginate @questions %>
+<% end %>
+
+<%= yield :paginate %>
+
 <% iterate @questions do |question| %>
   <%= render question %>
 <% end %>
 
-<%= paginate @questions %>
+<%= yield :paginate %>
