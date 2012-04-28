@@ -3,3 +3,14 @@
 
   <%= simple_format @question.body %>
 </article>
+
+<h2>Respostas</h2>
+
+<%= render @question.replies %>
+
+<% if logged_in? %>
+  <%= render "replies/form", :reply => @reply, :question => @question %>
+<% else %>
+  <%= t("reply.need_to_be_logged") %>
+<% end %>
+
