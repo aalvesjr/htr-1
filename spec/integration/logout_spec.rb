@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require "spec_helper"
 
 describe "Logout" do
@@ -15,7 +16,7 @@ describe "Logout" do
     end
 
     it "omits user name" do
-      page.should_not have_content(user.name)
+      page.should_not have_content("Olá, #{user.name}!")
     end
   end
 
