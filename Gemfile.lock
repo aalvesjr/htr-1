@@ -64,6 +64,7 @@ GEM
     multi_json (1.3.2)
     mysql2 (0.3.11)
     nokogiri (1.5.2)
+    paginate (1.0.1)
     polyglot (0.3.3)
     pry (0.9.8.4)
       coderay (~> 1.0.5)
@@ -137,6 +138,7 @@ DEPENDENCIES
   factory_girl
   factory_girl-preload
   mysql2
+  paginate
   pry
   rails (= 3.2.3)
   rspec-rails

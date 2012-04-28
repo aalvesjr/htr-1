@@ -10,4 +10,8 @@
   </li>
 </ul>
 
-<%= render @questions %>
+<% iterate @questions do |question| %>
+  <%= render question %>
+<% end %>
+
+<%= paginate @questions %>
