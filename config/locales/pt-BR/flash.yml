@@ -22,3 +22,12 @@ pt-BR:
       create:
         notice: "Sua resposta foi adicionada!"
         alert: "Você precisa preencher sua resposta."
+
+    admin:
+      categories:
+        destroy:
+          notice: "Categoria removida com sucesso!"
+        create:
+          notice: "Categoria criada com sucesso!"
+        update:
+          notice: "Categoria atualizada com sucesso!"

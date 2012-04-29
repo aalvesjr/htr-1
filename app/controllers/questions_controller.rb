@@ -19,6 +19,11 @@ class QuestionsController < ApplicationController
   def index
     @questions = QuestionFilter.filter(params)
     @sidebar = QuestionsSidebarPresenter.new
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @questions }
+    end
   end
 
   def search
@@ -35,6 +40,8 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+
+    render :layout => "window"
   end
 
   def create
@@ -43,7 +50,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to question_path(@question), :notice => t("flash.questions.create.notice")
     else
-      render :new
+      render :new, :layout => "window"
     end
   end
 
