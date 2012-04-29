@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120428152955) do
+ActiveRecord::Schema.define(:version => 20120429125038) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                           :null => false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120428152955) do
     t.datetime "updated_at",                      :null => false
     t.integer  "replies_count", :default => 0
     t.boolean  "delta",         :default => true, :null => false
+    t.integer  "views_count",   :default => 0
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"

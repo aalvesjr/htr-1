@@ -3,8 +3,22 @@ class QuestionsController < ApplicationController
 
   helper_method :categories
 
+  rescue_from Riddle::ConnectionError do
+    redirect_to root_path, :alert => t("flash.questions.search.alert")
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do
+    case request.format.symbol
+    when :html
+      render :file => Rails.root.join("public/404.html"), :layout => false, :status => 404
+    when :json
+      render :json => {:error => "Question not found"}, :status => 404
+    end
+  end
+
   def index
     @questions = QuestionFilter.filter(params)
+    @sidebar = QuestionsSidebarPresenter.new
   end
 
   def search
@@ -13,6 +27,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @question.viewed!
+
     @reply = Reply.new
     @reply_form = ReplyFormPresenter.new(current_user, @question, @reply)
   end
