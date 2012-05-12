@@ -2,9 +2,10 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   attr_reader :password
 
-  validates_presence_of :name, :password
+  validates_presence_of :name
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates_confirmation_of :password
+  validates_presence_of :password, :password_confirmation, :if => :validate_password?
+  validates_confirmation_of :password, :if => :validate_password?
   validates_uniqueness_of :email
   validates_inclusion_of :role, :in => %w[admin user]
 
@@ -29,5 +30,10 @@ class User < ActiveRecord::Base
     self.password_hash = encryption[:hash]
 
     @password = password
+  end
+
+  private
+  def validate_password?
+    new_record? || password.present? || password_confirmation.present?
   end
 end
