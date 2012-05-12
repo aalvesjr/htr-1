@@ -11,6 +11,12 @@ Hackerboard::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = {
+    :location            => "/usr/sbin/sendmail",
+    :arguments           => "-i -t",
+    :openssl_verify_mode => "none"
+  }
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
